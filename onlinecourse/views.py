@@ -139,6 +139,14 @@ def extract_answers(request):
 def show_exam_result(request, course_id, submission_id):
     submission_id = request.submission_id
     course_id = request.course_id
+    choices_ids = []
+    grade = ""
+    choices_ids = Submission.objects.fliter(submission_id=submission_id)
+    for choice_id in choices_ids:
+        if Question.is_get_score(choice_id=choice_id):
+            grade =+ Question.grade
+        else:
+            grade =+0
 
 
 
