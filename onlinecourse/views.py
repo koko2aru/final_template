@@ -117,7 +117,7 @@ def submit(request, course_id):
     Submission.objects.create(enrollment=enrollment)
     choices = extract_answers()
     Submissions.append(choices=choices)
-    return redirect('onlinecourse:show_exam_result' arg=(submission_id))
+    return redirect('onlinecourse:show_exam_result' args=(submission_id))
 
 # <HINT> A example method to collect the selected choices from the exam form from the request object
 def extract_answers(request):
@@ -139,15 +139,15 @@ def extract_answers(request):
 def show_exam_result(request, course_id, submission_id):
     submission_id = request.submission_id
     course_id = request.course_id
-    choices_ids = []
+    selected_ids = []
     grade = ""
-    choices_ids = Submission.objects.fliter(submission_id=submission_id)
-    for choice_id in choices_ids:
-        if Question.is_get_score(choice_id):
+    selected_ids = Submission.objects.fliter(submission_id=submission_id)
+    for selected_id in selected_ids:
+        if Question.is_get_score(selected_id):
             grade =+ Question.grade
         else:
             grade =+0
-return render('onlinecourse:
+return render('onlinecourse:show_exam_result' args=(selected_ids, grade, course_id))
 
 
 
