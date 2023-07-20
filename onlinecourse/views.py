@@ -116,7 +116,7 @@ def submit(request, course_id):
     enrollment = Enrollment.objects.get(user=user, course=course)
     Submission.objects.create(enrollment=enrollment)
     choices = extract_answers()
-    choices.append(Submissions, choices)  
+    Submissions.append(choices=choices)
     return redirect('onlinecourse:show_exam_result' submission_id)
 
 # <HINT> A example method to collect the selected choices from the exam form from the request object
