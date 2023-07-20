@@ -143,10 +143,11 @@ def show_exam_result(request, course_id, submission_id):
     grade = ""
     choices_ids = Submission.objects.fliter(submission_id=submission_id)
     for choice_id in choices_ids:
-        if Question.is_get_score(choice_id=choice_id):
+        if Question.is_get_score(choice_id):
             grade =+ Question.grade
         else:
             grade =+0
+return render('onlinecourse:
 
 
 
